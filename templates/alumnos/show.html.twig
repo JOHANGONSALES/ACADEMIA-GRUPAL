@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Alumnos{% endblock %}
+
+{% block body %}
+    <h1>Alumnos</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ alumno.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ alumno.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Primer_apellido</th>
+                <td>{{ alumno.primerApellido }}</td>
+            </tr>
+            <tr>
+                <th>Segundo_apellido</th>
+                <td>{{ alumno.segundoApellido }}</td>
+            </tr>
+            <tr>
+                <th>Fecha_nacimiento</th>
+                <td>{{ alumno.fechaNacimiento ? alumno.fechaNacimiento|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Domicilio</th>
+                <td>{{ alumno.domicilio }}</td>
+            </tr>
+            <tr>
+                <th>Poblacion</th>
+                <td>{{ alumno.poblacion }}</td>
+            </tr>
+            <tr>
+                <th>Codigo_postal</th>
+                <td>{{ alumno.codigoPostal }}</td>
+            </tr>
+            <tr>
+                <th>Telefono</th>
+                <td>{{ alumno.telefono }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ alumno.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_alumnos_index') }}">back to list</a>
+
+    <a href="{{ path('app_alumnos_edit', {'id': alumno.id}) }}">edit</a>
+
+    {{ include('alumnos/_delete_form.html.twig') }}
+{% endblock %}
