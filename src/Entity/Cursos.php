@@ -21,12 +21,12 @@ class Cursos
     #[ORM\Column]
     private ?bool $estado = null;
 
-    #[ORM\OneToMany(mappedBy: 'fk_cursos', targetEntity: Alumnoscruso::class)]
-    private Collection $Cursos;
+    #[ORM\OneToMany(mappedBy: 'fk_curso', targetEntity: Alumnoscursos::class)]
+    private Collection $alumnoscursos;
 
     public function __construct()
     {
-        $this->Cursos = new ArrayCollection();
+        $this->alumnoscursos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -59,29 +59,29 @@ class Cursos
     }
 
     /**
-     * @return Collection<int, Alumnoscruso>
+     * @return Collection<int, Alumnoscursos>
      */
-    public function getCursos(): Collection
+    public function getAlumnoscursos(): Collection
     {
-        return $this->Cursos;
+        return $this->alumnoscursos;
     }
 
-    public function addCurso(Alumnoscruso $curso): static
+    public function addAlumnoscurso(Alumnoscursos $alumnoscurso): static
     {
-        if (!$this->Cursos->contains($curso)) {
-            $this->Cursos->add($curso);
-            $curso->setFkCursos($this);
+        if (!$this->alumnoscursos->contains($alumnoscurso)) {
+            $this->alumnoscursos->add($alumnoscurso);
+            $alumnoscurso->setFkCurso($this);
         }
 
         return $this;
     }
 
-    public function removeCurso(Alumnoscruso $curso): static
+    public function removeAlumnoscurso(Alumnoscursos $alumnoscurso): static
     {
-        if ($this->Cursos->removeElement($curso)) {
+        if ($this->alumnoscursos->removeElement($alumnoscurso)) {
             // set the owning side to null (unless already changed)
-            if ($curso->getFkCursos() === $this) {
-                $curso->setFkCursos(null);
+            if ($alumnoscurso->getFkCurso() === $this) {
+                $alumnoscurso->setFkCurso(null);
             }
         }
 
