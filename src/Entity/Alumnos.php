@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AlumnosRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -40,6 +42,14 @@ class Alumnos
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
+
+    #[ORM\OneToMany(mappedBy: 'fk_alumno', targetEntity: Alumnoscruso::class)]
+    private Collection $Alumnos;
+
+    public function __construct()
+    {
+        $this->Alumnos = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -150,6 +160,36 @@ class Alumnos
     public function setEmail(string $email): static
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Alumnoscruso>
+     */
+    public function getAlumnos(): Collection
+    {
+        return $this->Alumnos;
+    }
+
+    public function addAlumno(Alumnoscruso $alumno): static
+    {
+        if (!$this->Alumnos->contains($alumno)) {
+            $this->Alumnos->add($alumno);
+            $alumno->setFkAlumno($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAlumno(Alumnoscruso $alumno): static
+    {
+        if ($this->Alumnos->removeElement($alumno)) {
+            // set the owning side to null (unless already changed)
+            if ($alumno->getFkAlumno() === $this) {
+                $alumno->setFkAlumno(null);
+            }
+        }
 
         return $this;
     }
