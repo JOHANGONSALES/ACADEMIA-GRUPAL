@@ -1,2 +1,2 @@
 # ACADEMIA-GRUPAL
-Academia lenguaje de programaci
+Academia lenguaje de programación
