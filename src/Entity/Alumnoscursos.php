@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\AlumnoscursosRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AlumnoscursosRepository::class)]
@@ -13,11 +14,14 @@ class Alumnoscursos
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'alumnoscursos')]
     private ?Alumnos $fk_alumno = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'alumnoscursos')]
     private ?Cursos $fk_curso = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $fecha = null;
 
     public function getId(): ?int
     {
@@ -44,6 +48,18 @@ class Alumnoscursos
     public function setFkCurso(?Cursos $fk_curso): static
     {
         $this->fk_curso = $fk_curso;
+
+        return $this;
+    }
+
+    public function getFecha(): ?\DateTimeInterface
+    {
+        return $this->fecha;
+    }
+
+    public function setFecha(\DateTimeInterface $fecha): static
+    {
+        $this->fecha = $fecha;
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CursosRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CursosRepository::class)]
@@ -18,6 +20,14 @@ class Cursos
 
     #[ORM\Column]
     private ?bool $estado = null;
+
+    #[ORM\OneToMany(mappedBy: 'fk_curso', targetEntity: Alumnoscursos::class)]
+    private Collection $alumnoscursos;
+
+    public function __construct()
+    {
+        $this->alumnoscursos = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -44,6 +54,36 @@ class Cursos
     public function setEstado(bool $estado): static
     {
         $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Alumnoscursos>
+     */
+    public function getAlumnoscursos(): Collection
+    {
+        return $this->alumnoscursos;
+    }
+
+    public function addAlumnoscurso(Alumnoscursos $alumnoscurso): static
+    {
+        if (!$this->alumnoscursos->contains($alumnoscurso)) {
+            $this->alumnoscursos->add($alumnoscurso);
+            $alumnoscurso->setFkCurso($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAlumnoscurso(Alumnoscursos $alumnoscurso): static
+    {
+        if ($this->alumnoscursos->removeElement($alumnoscurso)) {
+            // set the owning side to null (unless already changed)
+            if ($alumnoscurso->getFkCurso() === $this) {
+                $alumnoscurso->setFkCurso(null);
+            }
+        }
 
         return $this;
     }

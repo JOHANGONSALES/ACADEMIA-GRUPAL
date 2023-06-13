@@ -12,6 +12,7 @@ class AlumnoscursosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('fecha')
             ->add('fk_alumno')
             ->add('fk_curso')
         ;
