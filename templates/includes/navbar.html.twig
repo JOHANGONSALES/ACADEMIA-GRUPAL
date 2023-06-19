@@ -2,8 +2,8 @@
     <!-- page Navigation -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark shadow" data-spy="affix" data-offset-top="10">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="assets/imgs/logo.svg" alt="">
+            <a class="navbar-brand" href="{{ asset('/') }}">
+                <img src="{{ asset('assets/imgs/logo.svg') }}" alt="">
             </a>
             <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -11,20 +11,20 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">        
                     <li class="nav-item">
-                        <a class="nav-link" href="" title="Página principal">Home</a>
+                        <a class="nav-link" href="{{ asset('/') }}" title="Página principal">Home</a>
                     </li>             
                     <li class="nav-item">
-                        <a class="nav-link" href="" title="Listado alumnos">Alumnos</a>
+                        <a class="nav-link" href="{{ asset('/alumnos') }}" title="Listado alumnos">Alumnos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" title="Listado cursos">Cursos</a>
+                        <a class="nav-link" href="{{ asset('/cursos') }}" title="Listado cursos">Cursos</a>
                     </li>
                     
                     <li class="nav-item">
                         <a class="nav-link" href="">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" title="Listado alumnos con cursos asignado" class="ml-4 nav-link btn btn-primary btn-sm rounded">Relacion</a>
+                        <a href="{{ asset('/alumnoscursos') }}" title="Listado alumnos con cursos asignado" class="ml-4 nav-link btn btn-primary btn-sm rounded">Relacion</a>
                     </li>
                 </ul>
             </div>
