@@ -29,8 +29,22 @@ class CursosController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $cursosRepository->save($curso, true);
-
+            // $cursosRepository->save($curso, true);
+            /** @var UploadedFile $uploadedFile */
+            $uploadedFile = $form['imageFile']->getData();
+            $nombreArchivo = '1';
+             if ($uploadedFile) {
+               //$destination = $this->getParameter('kernel.projectdir').'/public/uploads';
+                $destination = 'uploads';
+                $nombreArchivo = "subido".uniqid().".".$uploadedFile->guessExtension();
+                $uploadedFile->move(
+                   $destination,
+                  $nombreArchivo
+              );
+            }
+                $curso->setImagen($nombreArchivo);
+                $curso -> setEstado(1);
+                $cursosRepository->save($curso, true);
             return $this->redirectToRoute('app_cursos_index', [], Response::HTTP_SEE_OTHER);
         }
 
