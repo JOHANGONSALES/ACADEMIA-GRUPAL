@@ -23,7 +23,10 @@ class Cursos
 
     #[ORM\OneToMany(mappedBy: 'fk_curso', targetEntity: Alumnoscursos::class)]
     private Collection $alumnoscursos;
-
+    public function __toString()
+    {
+        return $this->titulo;
+    }
     public function __construct()
     {
         $this->alumnoscursos = new ArrayCollection();
