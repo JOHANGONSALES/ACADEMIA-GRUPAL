@@ -23,6 +23,12 @@ class Cursos
 
     #[ORM\OneToMany(mappedBy: 'fk_curso', targetEntity: Alumnoscursos::class)]
     private Collection $alumnoscursos;
+
+    #[ORM\Column(length: 255)]
+    private ?string $descripcion = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imagen = null;
     public function __toString()
     {
         return $this->titulo;
@@ -87,6 +93,30 @@ class Cursos
                 $alumnoscurso->setFkCurso(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDescripcion(): ?string
+    {
+        return $this->descripcion;
+    }
+
+    public function setDescripcion(string $descripcion): static
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    public function getImagen(): ?string
+    {
+        return $this->imagen;
+    }
+
+    public function setImagen(string $imagen): static
+    {
+        $this->imagen = $imagen;
 
         return $this;
     }
