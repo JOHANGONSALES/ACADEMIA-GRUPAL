@@ -43,6 +43,11 @@ class Alumnos
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
+    public function __toString()
+    {
+        return $this->nombre;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
