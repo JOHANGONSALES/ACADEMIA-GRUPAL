@@ -8,8 +8,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-class Cursos1Type extends AbstractType
+class CursosType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -23,7 +24,7 @@ class Cursos1Type extends AbstractType
                     'placeholder' => 'Titulo del curso'
                 )
             ))
-            ->add('descripcion', TextType::class, array(
+            ->add('descripcion', TextareaType::class, array(
                 'label' => "Descripción",
                 'required' => true,
                 'attr' => array(
