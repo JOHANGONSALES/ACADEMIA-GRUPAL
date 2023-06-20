@@ -111,6 +111,7 @@ class Cursos
 
     public function getImagen(): ?string
     {
+       
         return $this->imagen;
     }
 

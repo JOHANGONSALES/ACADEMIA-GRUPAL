@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Cursos;
-use App\Form\Cursos1Type;
+use App\Form\CursosType;
 use App\Repository\CursosRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,30 +25,24 @@ class CursosController extends AbstractController
     public function new(Request $request, CursosRepository $cursosRepository): Response
     {
         $curso = new Cursos();
-        $form = $this->createForm(Cursos1Type::class, $curso);
+        $form = $this->createForm(CursosType::class, $curso);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // $cursosRepository->save($curso, true);
             /** @var UploadedFile $uploadedFile */
             $uploadedFile = $form['imageFile']->getData();
-            $nombreArchivo = '1';
-             if ($uploadedFile) {
-               //$destination = $this->getParameter('kernel.projectdir').'/public/uploads';
-                $destination = 'uploads';
-                $nombreArchivo = "subido".uniqid().".".$uploadedFile->guessExtension();
-                $uploadedFile->move(
-                   $destination,
-                  $nombreArchivo
-              );
+            $nombreArchivo = '';
+            if ($uploadedFile) {
+                $llamadaImagen = new option\images();
+                $nombreArchivo = $llamadaImagen->Subir_imagen($uploadedFile); 
             }
                 $curso->setImagen($nombreArchivo);
-                $curso -> setEstado(1);
                 $cursosRepository->save($curso, true);
             return $this->redirectToRoute('app_cursos_index', [], Response::HTTP_SEE_OTHER);
         }
-
+        
         return $this->renderForm('cursos/new.html.twig', [
+            
             'curso' => $curso,
             'form' => $form,
         ]);
@@ -65,16 +59,25 @@ class CursosController extends AbstractController
     #[Route('/{id}/edit', name: 'app_cursos_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Cursos $curso, CursosRepository $cursosRepository): Response
     {
-        $form = $this->createForm(Cursos1Type::class, $curso);
+        $form = $this->createForm(CursosType::class, $curso);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $uploadedFile */
+            $uploadedFile = $form['imageFile']->getData();
+            $nombreArchivo = '';
+             if ($uploadedFile) {
+                $llamadaImagen = new option\images();
+                $nombreArchivo = $llamadaImagen->Subir_imagen($uploadedFile); 
+            }
+            $curso->setImagen($nombreArchivo);
             $cursosRepository->save($curso, true);
 
             return $this->redirectToRoute('app_cursos_index', [], Response::HTTP_SEE_OTHER);
         }
-
+        
         return $this->renderForm('cursos/edit.html.twig', [
+
             'curso' => $curso,
             'form' => $form,
         ]);
