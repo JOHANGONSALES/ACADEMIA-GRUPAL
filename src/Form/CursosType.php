@@ -43,7 +43,7 @@ class CursosType extends AbstractType
             ))
 
             ->add('imageFile', FileType::class, [
-                'label' => 'imagen',
+                'label' => 'Imagen',
                 'required' => false,
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
