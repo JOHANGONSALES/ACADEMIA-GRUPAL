@@ -47,6 +47,11 @@ class Alumnos
         return $this->nombre;
     }
 
+    public function __toString()
+    {
+        return $this->nombre;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
