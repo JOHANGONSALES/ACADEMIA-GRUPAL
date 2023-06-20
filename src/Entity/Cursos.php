@@ -29,6 +29,12 @@ class Cursos
 
     #[ORM\Column(length: 255)]
     private ?string $imagen = null;
+
+    #[ORM\Column]
+    private ?bool $new = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $tipo = null;
     public function __toString()
     {
         return $this->titulo;
@@ -118,6 +124,30 @@ class Cursos
     public function setImagen(string $imagen): static
     {
         $this->imagen = $imagen;
+
+        return $this;
+    }
+
+    public function isNew(): ?bool
+    {
+        return $this->new;
+    }
+
+    public function setNew(bool $new): static
+    {
+        $this->new = $new;
+
+        return $this;
+    }
+
+    public function getTipo(): ?string
+    {
+        return $this->tipo;
+    }
+
+    public function setTipo(string $tipo): static
+    {
+        $this->tipo = $tipo;
 
         return $this;
     }
