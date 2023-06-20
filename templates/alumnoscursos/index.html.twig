@@ -5,21 +5,26 @@
 {% block div %}
 <section class="section" id="about">
         <div class="container">
-    <h1>Alumnoscursos index</h1>
+    <h1>relacioncurso</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
+                <th>nombre</th>
                 <th>Fecha</th>
+                <th>relacioncurso</th>
                 <th>actions</th>
+               
             </tr>
         </thead>
         <tbody>
         {% for alumnoscurso in alumnoscursos %}
             <tr>
                 <td>{{ alumnoscurso.id }}</td>
+                <td>{{ alumnoscurso.FkAlumno.nombre }}</td>
                 <td>{{ alumnoscurso.fecha ? alumnoscurso.fecha|date('Y-m-d') : '' }}</td>
+                <td>{{ alumnoscurso.FkCurso.titulo }}</td>
                 <td>
                     <a href="{{ path('app_alumnoscursos_show', {'id': alumnoscurso.id}) }}">show</a>
                     <a href="{{ path('app_alumnoscursos_edit', {'id': alumnoscurso.id}) }}">edit</a>
