@@ -24,7 +24,7 @@ class Cursos
     #[ORM\OneToMany(mappedBy: 'fk_curso', targetEntity: Alumnoscursos::class)]
     private Collection $alumnoscursos;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 1000)]
     private ?string $descripcion = null;
 
     #[ORM\Column(length: 255)]
