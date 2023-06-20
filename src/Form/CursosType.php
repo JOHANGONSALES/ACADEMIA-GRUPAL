@@ -32,10 +32,19 @@ class CursosType extends AbstractType
                     'placeholder' => 'Pon aquí la descripción del curso'
                 )
             ))
+            ->add('new')
+            ->add('tipo', TextType::class, array(
+                'label' => "Seleccionar tipo de curso",
+                'required' => true,
+                'attr' => array(
+                    'class' => 'form-control',
+                    'placeholder' => 'Tipo de curso'
+                )
+            ))
 
             ->add('imageFile', FileType::class, [
                 'label' => 'imagen',
-
+                'required' => false,
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
 
