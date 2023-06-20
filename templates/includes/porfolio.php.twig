@@ -10,22 +10,23 @@
                         New
                     </a>
                     {% for curso in tipos %}
-                        <a href="#" data-filter=".{{ curso.titulo }}">
-                            {{ curso.titulo }}
+                        <a href="#" data-filter=".{{ curso.tipo }}">
+                            {{ curso.tipo }}
                         </a>
                     {% endfor %}
                 </div>
             <div class="portfolio-container"> 
             {% for curso_dos in cursos %}
-                <div class="col-md-6 col-lg-4 {{ curso_dos.titulo }} new">
+                <div class="col-md-6 col-lg-4 {{ curso_dos.tipo }} {{ curso_dos.new ? 'new':'' }}">
                     <div class="portfolio-item">
-                        <img src="assets/imgs/web-1.jpg" class="img-fluid" alt="Download free bootstrap 4 admin dashboard, free boootstrap 4 templates">
+                        <img src="{{ asset('uploads/')}}{{ curso_dos.imagen }}" class="img-fluid" alt="{{ curso_dos.tipo }}">
                         <div class="content-holder">
-                            <a class="img-popup" href="{{ path('app_cursos_show', {'id': curso_dos.id}) }}"></a>
+                            <a class="img-popup" href="{{ path('app_cursos_show', {'id': curso_dos.id}) }}">
                             <div class="text-holder">
-                                <h6 class="title">{{ curso_dos.titulo }}</h6>
-                                <p class="subtitle">{{ curso_dos.descripcion }}</p>
+                                <h6 class="title">{{ curso_dos.tipo }}</h6>
+                                <p class="subtitle">{{ curso_dos.titulo }}</p>
                             </div>
+                            </a>
                         </div>   
                     </div>             
                 </div>

@@ -41,7 +41,7 @@ class CursosRepository extends ServiceEntityRepository
     public function getDistinct(){
         $query = $this->createQueryBuilder('cursos');
         $res = $query
-            ->select("cursos.titulo")
+            ->select("cursos.tipo")
             ->distinct(true)
             ->getQuery()
             ->getResult();
