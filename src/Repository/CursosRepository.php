@@ -38,6 +38,22 @@ class CursosRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function getDistinct(){
+        $query = $this->createQueryBuilder('cursos');
+        $res = $query
+            ->select("cursos.titulo")
+            ->distinct(true)
+            ->getQuery()
+            ->getResult();
+        return $res;
+    }
+    public function findAllOrdererByUnike(): ?Cursos
+    {
+        return $this->createQueryBuilder('c')
+            ->distinct('c.titulo')
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 
 //    /**
 //     * @return Cursos[] Returns an array of Cursos objects
