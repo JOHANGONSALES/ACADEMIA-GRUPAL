@@ -4,37 +4,46 @@
 
 {% block div %}
 
-  <div style="margin-left: 20px;">    
-    <h1>Cursos</h1>
-    <table class="table table-striped">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ curso.id }}</td>
-            </tr>
-            <tr>
-                <th>Titulo</th>
-                <td>{{ curso.titulo }}</td>
-            </tr>
-            <tr>
-                <th>Estado</th>
-                <td>{{ curso.estado ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Descripcion</th>
-                <td>{{ curso.descripcion }}</td>
-            </tr>
-            <tr>
-                <th>Imagen</th>
-                <td>{{ curso.imagen }}</td>
-            </tr>
-        </tbody>
-    </table>
+<section class="section" id="about">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-md-6 pr-md-5 mb-4 mb-md-0">
+                    <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <th>Id</th>
+                                    <td>{{ curso.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Titulo</th>
+                                    <td>{{ curso.titulo }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Estado</th>
+                                    <td>{{ curso.estado ? 'Yes' : 'No' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>New</th>
+                                    <td>{{ curso.new ? 'Es nuevo' : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Descripcion</th>
+                                    <td>{{ curso.descripcion }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+            </div>
+            <div class="col-md-6 pl-md-5">
+                <img src="{{ asset('uploads/')}}{{ curso.imagen }}" class="img-fluid" alt="{{ curso.titulo }}">
+            </div>
+
+        </div>
+
+    
   
-    <a href="{{ path('app_cursos_edit', {'id': curso.id}) }}" class="btn btn-outline-primary" style="font-weight: 600; margin-bottom: 10px; width: 85px;">Edit</a>
-    {{ include('cursos/_delete_form.html.twig') }} 
+    <a href="{{ path('app_cursos_edit', {'id': curso.id}) }}" class="btn btn-outline-primary" style="font-weight: 600; margin-bottom: 10px; width: 85px;">Edit</a>{{ include('cursos/_delete_form.html.twig') }} 
      <a href="{{ path('app_cursos_index') }}"  style="font-weight: 600;">Back to list</a>
     </div>
-   
+</section>
 
 {% endblock %}
