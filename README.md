@@ -1,44 +1,28 @@
-# ACADEMIA-GRUPAL
+ACADEMIA GRUPAL
 
-## Proyecto de Symfony 
-Este es un proyecto de Symfony que tiene como objetivo gestionar cursos de programación y sus respectivos alumnos. El sistema permite ofrecer diferentes cursos y realizar el seguimiento de los alumnos inscritos en cada curso.
+Introducción:
+En la prestigiosa Academia Grupal, un grupo de desarrolladores apasionados por la enseñanza y la programación, compuesto por Juan Carlos, Johan, Nacyla, Eva y Yeny, han creado un sistema de gestión de cursos utilizando el framework Symfony y la poderosa plantilla Twig. Este proyecto tiene como objetivo ofrecer una plataforma en línea donde los alumnos puedan explorar y registrarse en diferentes cursos de programación.
 
-Requisitos previos
-tener instalado lo siguiente, antes de ejecutar el proyecto:
+Capítulo 1: Configuración inicial
 
-- PHP (8.2.6)
-- Composer
-- symfony --version=5.4
-- Servidor de base de datos
+Nuestro equipo de desarrolladores se reunió para comenzar a dar vida a su proyecto. Utilizando Symfony, crearon dos entidades clave: "Alumno" y "Curso". La entidad "Alumno" contiene información personal del estudiante, como nombre, dirección de correo electrónico y número de teléfono. Por otro lado, la entidad "Curso" incluye detalles sobre los cursos disponibles, como título, descripción..
 
-Funcionalidades
-El proyecto cuenta con las siguientes funcionalidades principales:
+Capítulo 2: Relación entre Alumnos y Cursos
 
-Gestión de Cursos:
+La Academia Grupal comprendió que era esencial establecer una relación entre los alumnos y los cursos. Para lograr esto, crearon una relación de muchos a muchos entre las entidades "Alumno" y "Curso". Esto permitiría a los alumnos inscribirse en múltiples cursos y a los cursos aceptar a varios alumnos.
 
-Creación, edición y eliminación de cursos.
-Listado de todos los cursos disponibles.
-Detalles de un curso específico.
-Gestión de Alumnos:
+Capítulo 3: Diseño de la interfaz de usuario con Twig
 
-Registro de nuevos alumnos.
-Asignación de alumnos a cursos.
-Listado de todos los alumnos inscritos en un curso.
-Estructura del proyecto
-El proyecto sigue una estructura de directorios típica de Symfony. A continuación se muestra una descripción de los directorios clave:
+Nuestros desarrolladores, conscientes de la importancia de una interfaz de usuario atractiva y fácil de usar, aprovecharon la potencia de Twig para diseñar las vistas de su aplicación web. Crearon plantillas bien estructuradas y reutilizables para mostrar la información de los cursos, permitiendo a los alumnos buscar y seleccionar los cursos que más les interesen.
 
-- config: Contiene la configuración del proyecto.
-- src: Contiene el código fuente del proyecto.
-- Controller: Contiene los controladores de Symfony.
-- Entity: Contiene las entidades de Doctrine (Alumno y Curso).
-- Form: Contiene los formularios de Symfony.
-- Repository: Contiene los repositorios de Doctrine para las entidades.
-- templates: Contiene las plantillas Twig para las vistas.
-- public: Contiene los archivos públicos del proyecto (CSS, JS, imágenes, etc.).
- -migrations: Contiene las migraciones de Doctrine.
+Capítulo 4: Funcionalidades del sistema
 
-Licencia
-Este proyecto está bajo la Licencia Juan Carlos S.A
+El equipo de desarrollo implementó diversas funcionalidades en su sistema de gestión de cursos. Los alumnos pueden registrarse en la plataforma proporcionando su información personal y luego explorar la lista de cursos disponibles. Para inscribirse en un curso específico, simplemente hacen clic en un botón y la relación entre el alumno y el curso se establece automáticamente.
 
+Capítulo 5: Mejoras y expansiones futuras
 
- 
+A medida que el proyecto avanzaba, el equipo de desarrollo recibió comentarios y sugerencias de los usuarios. Se dieron cuenta de la necesidad de agregar nuevas características, como un panel de administración para que los profesores pudieran gestionar los cursos y una funcionalidad de calificación para que los alumnos pudieran evaluar la calidad de los cursos. Estas mejoras se planearon para futuras versiones del sistema.
+
+Conclusión:
+
+Gracias a la dedicación y pasión de Juan Carlos, Johan, Nacyla, Eva y Yeny, la Academia Grupal pudo crear un sistema de gestión de cursos efectivo y atractivo utilizando Symfony y Twig. Su proyecto ha permitido a los alumnos explorar y registrarse en diferentes cursos de programación, brindándoles una oportunidad única de aprender y mejorar sus habilidades. La Academia Grupal sigue trabajando arduamente para mejorar y expandir su sistema, con el objetivo de brindar la mejor experiencia educativa en línea a todos sus estudiantes.
