@@ -11,10 +11,6 @@
                     <table class="table table-striped">
                             <tbody>
                                 <tr>
-                                    <th>Id</th>
-                                    <td>{{ curso.id }}</td>
-                                </tr>
-                                <tr>
                                     <th>Titulo</th>
                                     <td>{{ curso.titulo }}</td>
                                 </tr>
@@ -41,7 +37,7 @@
             <a href="{{ path('app_cursos_edit', {'id': curso.id}) }}" class="btn btn-outline-primary" style="font-weight: 600; margin-bottom: 10px; width: 85px;">Edit</a>
             {{ include('cursos/_delete_form.html.twig') }} 
             <div style="margin-top: 20px;">
-                <a href="{{ path('app_alumnos_index') }}" >Back to list</a>
+                <a href="{{ path('app_cursos_index') }}" >Back to list</a>
             </div>
     </div>
 </section>
