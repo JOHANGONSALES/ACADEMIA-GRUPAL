@@ -22,7 +22,10 @@ class Alumnoscursos
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $fecha = null;
-
+    public function __toString()
+    {
+        return $this->fk_alumno;
+    }
     public function getId(): ?int
     {
         return $this->id;
