@@ -1,51 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Alumnos{% endblock %}
+{% block title %}Alumnos {% endblock %}
 
 {% block div %}
-    <h1>Alumnos</h1>
+    <section class="section" id="about">
+        <div style="margin-left: 25px;">
+            <h1>Alumnos</h1>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Primer_apellido</th>
-                <th>Segundo_apellido</th>
-                <th>Fecha_nacimiento</th>
-                <th>Domicilio</th>
-                <th>Poblacion</th>
-                <th>Codigo_postal</th>
-                <th>Telefono</th>
-                <th>Email</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for alumno in alumnos %}
-            <tr>
-                <td>{{ alumno.id }}</td>
-                <td>{{ alumno.nombre }}</td>
-                <td>{{ alumno.primerApellido }}</td>
-                <td>{{ alumno.segundoApellido }}</td>
-                <td>{{ alumno.fechaNacimiento ? alumno.fechaNacimiento|date('Y-m-d') : '' }}</td>
-                <td>{{ alumno.domicilio }}</td>
-                <td>{{ alumno.poblacion }}</td>
-                <td>{{ alumno.codigoPostal }}</td>
-                <td>{{ alumno.telefono }}</td>
-                <td>{{ alumno.email }}</td>
-                <td>
-                    <a href="{{ path('app_alumnos_show', {'id': alumno.id}) }}">show</a>
-                    <a href="{{ path('app_alumnos_edit', {'id': alumno.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="11">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Primer_apellido</th>
+                        <th>Segundo_apellido</th>
+                        <th>Fecha_nacimiento</th>
+                        <th>Domicilio</th>
+                        <th>Poblacion</th>
+                        <th>Codigo_postal</th>
+                        <th>Telefono</th>
+                        <th>Email</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for alumno in alumnos %}
+                    <tr>
+                        <td>{{ alumno.nombre }}</td>
+                        <td>{{ alumno.primerApellido }}</td>
+                        <td>{{ alumno.segundoApellido }}</td>
+                        <td>{{ alumno.fechaNacimiento ? alumno.fechaNacimiento|date('Y-m-d') : '' }}</td>
+                        <td>{{ alumno.domicilio }}</td>
+                        <td>{{ alumno.poblacion }}</td>
+                        <td>{{ alumno.codigoPostal }}</td>
+                        <td>{{ alumno.telefono }}</td>
+                        <td>{{ alumno.email }}</td>
+                        <td>
+                            <a href="{{ path('app_alumnos_show', {'id': alumno.id}) }}">show</a>
+                            <a href="{{ path('app_alumnos_edit', {'id': alumno.id}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="11">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <a href="{{ path('app_alumnos_new') }}">Create new</a>
+        </div>
+    </section>
 
-    <a href="{{ path('app_alumnos_new') }}">Create new</a>
 {% endblock %}
+
