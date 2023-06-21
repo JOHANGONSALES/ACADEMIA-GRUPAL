@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Alumnos{% endblock %}
+{% block title %}Alumnos {% endblock %}
 
 {% block div %}
     <section class="section" id="about">
@@ -46,8 +46,9 @@
                 {% endfor %}
                 </tbody>
             </table>
-
             <a href="{{ path('app_alumnos_new') }}">Create new</a>
         </div>
     </section>
+
 {% endblock %}
+
