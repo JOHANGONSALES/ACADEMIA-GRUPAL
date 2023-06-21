@@ -9,7 +9,7 @@
 }}
         <title>
             {% block title %}
-                bienvenido 
+                Bienvenido 
             {% endblock %}
         </title>
 </head>
@@ -17,6 +17,12 @@
 {{
     render(controller(
         'App\\Controller\\partes\\navbar::navbar_render',
+        { 'max': 3 }
+    ))
+}}
+{{
+    render(controller(
+        'App\\Controller\\partes\\header::header_iniciar',
         { 'max': 3 }
     ))
 }}

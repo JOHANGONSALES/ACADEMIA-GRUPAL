@@ -3,39 +3,40 @@
 {% block title %}Cursos{% endblock %}
 
 {% block div %}
-    <h1>Cursos</h1>
+    <div style="margin-left: 20px;">
+        <h1>Cursos</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Titulo</th>
+                    <th>Estado</th>
+                    <th>Descripcion</th>
+                    <th>Imagen</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for curso in cursos %}
+                <tr>
+                    <td class="table-active">{{ curso.id }}</td>
+                    <td>{{ curso.titulo }}</td>
+                    <td>{{ curso.estado ? 'Yes' : 'No' }}</td>
+                    <td>{{ curso.descripcion }}</td>
+                    <td>{{ curso.imagen }}</td>
+                    <td>
+                        <a href="{{ path('app_cursos_show', {'id': curso.id}) }}">Show</a>
+                        <a href="{{ path('app_cursos_edit', {'id': curso.id}) }}">Edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titulo</th>
-                <th>Estado</th>
-                <th>Descripcion</th>
-                <th>Imagen</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for curso in cursos %}
-            <tr>
-                <td>{{ curso.id }}</td>
-                <td>{{ curso.titulo }}</td>
-                <td>{{ curso.estado ? 'Yes' : 'No' }}</td>
-                <td>{{ curso.descripcion }}</td>
-                <td>{{ curso.imagen }}</td>
-                <td>
-                    <a href="{{ path('app_cursos_show', {'id': curso.id}) }}">show</a>
-                    <a href="{{ path('app_cursos_edit', {'id': curso.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_cursos_new') }}">Create new</a>
+        <a href="{{ path('app_cursos_new') }}" style="font-weight: 600;">Create new</a>
+    </div>
 {% endblock %}

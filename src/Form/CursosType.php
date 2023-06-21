@@ -9,6 +9,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+//use Symfony\Component\Form\Extension\Core\Type\EntityType;
+//use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class CursosType extends AbstractType
 {
@@ -33,6 +35,7 @@ class CursosType extends AbstractType
                 )
             ))
             ->add('new')
+
             ->add('tipo', TextType::class, array(
                 'label' => "Seleccionar tipo de curso",
                 'required' => true,
@@ -43,7 +46,7 @@ class CursosType extends AbstractType
             ))
 
             ->add('imageFile', FileType::class, [
-                'label' => 'imagen',
+                'label' => 'Imagen',
                 'required' => false,
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
