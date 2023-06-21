@@ -3,10 +3,7 @@
 {% block title %}Alumnos{% endblock %}
 
 {% block div %}
-
-<section class="section" id="about"> 
-    <div class="container">    
-     <h1>Alumnos</h1>
+    <h1>Alumnos</h1>
 
     <table class="table">
         <tbody>
@@ -58,5 +55,4 @@
     <a href="{{ path('app_alumnos_edit', {'id': alumno.id}) }}">edit</a>
 
     {{ include('alumnos/_delete_form.html.twig') }}
-   
 {% endblock %}
