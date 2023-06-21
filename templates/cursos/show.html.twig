@@ -3,9 +3,10 @@
 {% block title %}Cursos{% endblock %}
 
 {% block div %}
-    <h1>Cursos</h1>
 
-    <table class="table">
+  <div style="margin-left: 20px;">    
+    <h1>Cursos</h1>
+    <table class="table table-striped">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -29,10 +30,11 @@
             </tr>
         </tbody>
     </table>
+  
+    <a href="{{ path('app_cursos_edit', {'id': curso.id}) }}" class="btn btn-outline-primary" style="font-weight: 600; margin-bottom: 10px; width: 85px;">Edit</a>
+    {{ include('cursos/_delete_form.html.twig') }} 
+     <a href="{{ path('app_cursos_index') }}"  style="font-weight: 600;">Back to list</a>
+    </div>
+   
 
-    <a href="{{ path('app_cursos_index') }}">back to list</a>
-
-    <a href="{{ path('app_cursos_edit', {'id': curso.id}) }}">edit</a>
-
-    {{ include('cursos/_delete_form.html.twig') }}
 {% endblock %}

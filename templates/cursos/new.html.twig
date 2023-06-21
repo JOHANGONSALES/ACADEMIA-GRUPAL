@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Cursos{% endblock %}
+{% block title %}New Curso{% endblock %}
 
 {% block div %}
 <!--
@@ -11,17 +11,17 @@
 -->
     <section class="section" id="about">
         <div class="container">
-        <h1>Create new Cursos</h1>
+        <h1>Create New Curso</h1>
 
         {{ include('cursos/_form.html.twig') }}
 
-        <a href="{{ path('app_cursos_index') }}">back to list</a>
+        <a href="{{ path('app_cursos_index') }}" style= "">Back to list</a>
         </div>
     </div>
 <!--
     <script>
     $('#cursos_descripcion').summernote({
-        placeholder: 'Hello Bootstrap 4',
+        placeholder: 'Escribe aquí tu descripción',
         tabsize: 2,
         height: 100
       });
