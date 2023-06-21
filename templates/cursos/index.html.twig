@@ -25,7 +25,7 @@
                     <td>{{ curso.descripcion }}</td>
                     <td>{{ curso.imagen }}</td>
                     <td>
-                        <a href="{{ path('app_cursos_show', {'id': curso.id}) }}">Show</a>
+                        <a href="{{ path('app_cursos_show', {'id': curso.id}) }}" style="margin-right: 2px;">Show /</a>
                         <a href="{{ path('app_cursos_edit', {'id': curso.id}) }}">Edit</a>
                     </td>
                 </tr>

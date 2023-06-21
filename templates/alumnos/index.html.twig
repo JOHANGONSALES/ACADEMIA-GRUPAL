@@ -26,8 +26,8 @@
                         <td><strong>{{ alumno.segundoApellido }}</strong></td>
                         <td>{{ alumno.fechaNacimiento ? alumno.fechaNacimiento|date('d-M-Y') : '' }}</td>
                         <td>
-                            <a href="{{ path('app_alumnos_show', {'id': alumno.id}) }}">show</a>
-                            <a href="{{ path('app_alumnos_edit', {'id': alumno.id}) }}">edit</a>
+                            <a href="{{ path('app_alumnos_show', {'id': alumno.id}) }}" style="margin-right: 2px;">Show /</a>
+                            <a href="{{ path('app_alumnos_edit', {'id': alumno.id}) }}">Edit</a>
                         </td>
                     </tr>
                     <tr>
