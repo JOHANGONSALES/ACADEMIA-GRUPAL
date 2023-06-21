@@ -4,40 +4,49 @@
 
 {% block div %}
     <section class="section" id="about">
-        <div style="margin-left: 25px;">
+        <div class="container">
             <h1>Alumnos</h1>
-
+            <a href="{{ path('app_alumnos_new') }}" class="btn btn-primary w-lg">Create new</a>
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Primer_apellido</th>
-                        <th>Segundo_apellido</th>
-                        <th>Fecha_nacimiento</th>
-                        <th>Domicilio</th>
-                        <th>Poblacion</th>
-                        <th>Codigo_postal</th>
-                        <th>Telefono</th>
-                        <th>Email</th>
+                        <th>Primer apellido</th>
+                        <th>Segundo apellido</th>
+                        <th>Fecha nacimiento</th>
                         <th>actions</th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for alumno in alumnos %}
+
                     <tr>
-                        <td>{{ alumno.nombre }}</td>
-                        <td>{{ alumno.primerApellido }}</td>
-                        <td>{{ alumno.segundoApellido }}</td>
-                        <td>{{ alumno.fechaNacimiento ? alumno.fechaNacimiento|date('Y-m-d') : '' }}</td>
-                        <td>{{ alumno.domicilio }}</td>
-                        <td>{{ alumno.poblacion }}</td>
-                        <td>{{ alumno.codigoPostal }}</td>
-                        <td>{{ alumno.telefono }}</td>
-                        <td>{{ alumno.email }}</td>
+                        <td><strong>{{ alumno.nombre }}</strong></td>
+                        <td><strong>{{ alumno.primerApellido }}</strong></td>
+                        <td><strong>{{ alumno.segundoApellido }}</strong></td>
+                        <td>{{ alumno.fechaNacimiento ? alumno.fechaNacimiento|date('d-M-Y') : '' }}</td>
                         <td>
                             <a href="{{ path('app_alumnos_show', {'id': alumno.id}) }}">show</a>
                             <a href="{{ path('app_alumnos_edit', {'id': alumno.id}) }}">edit</a>
                         </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                                <!-- empieza tabla -->
+                                <table>
+                                        <tr>
+                                            <td><a href="tel:{{ alumno.telefono }}" title="Llamar por télefono a {{ alumno.nombre }}">{{ alumno.telefono }}</a></td>
+                                            <td><a href="mailto:{{ alumno.email }}" title="Enviar a {{ alumno.nombre }} un e-mail">{{ alumno.email }}</a></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ alumno.codigoPostal }}</td>
+                                            <td>{{ alumno.poblacion }}</td>
+                                            <td>{{ alumno.domicilio }}</td>
+                                        </tr>
+                                 </table>
+                                <!-- termian tabla -->
+                        <td>
                     </tr>
                 {% else %}
                     <tr>
@@ -46,7 +55,7 @@
                 {% endfor %}
                 </tbody>
             </table>
-            <a href="{{ path('app_alumnos_new') }}">Create new</a>
+
         </div>
     </section>
 
