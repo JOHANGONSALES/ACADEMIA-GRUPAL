@@ -24,7 +24,7 @@
                                 <td>{{ curso.estado ? 'Yes' : 'No' }}</td>
                                 <td>{{ curso.descripcion }}</td>
                                 <td>
-                                    <img src=""{{ asset('uploads/' ~ curso.imagen) }}"" alt="Imagen del curso">
+                                    <img src="{{ asset('uploads/')}}{{ curso.imagen }}" class="img-fluid" alt="{{ curso.titulo }}">
                                 </td>
 
                                 <td>
