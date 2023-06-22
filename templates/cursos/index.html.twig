@@ -3,45 +3,29 @@
 {% block title %}Cursos{% endblock %}
 
 {% block div %}
-    <section class="section" id="about">
+
+    <section class="section" id="blog">
         <div class="container">
-                <h1>Cursos</h1>
-                    <a href="{{ path('app_cursos_new') }}" class="btn btn-primary w-lg">Create new</a>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Titulo</th>
-                                <th>Estado</th>
-                                <th>Descripcion</th>
-                                <th>Imagen</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {% for curso in cursos %}
-                            <tr>
-                                <td>{{ curso.titulo }}</td>
-                                <td>{{ curso.estado ? 'Yes' : 'No' }}</td>
-                                <td>{{ curso.descripcion }}</td>
-                                <td>
-                                    <img src=""{{ asset('uploads/' ~ curso.imagen) }}"" alt="Imagen del curso">
-                                </td>
-
-                                <td>
-                                    <a href="{{ path('app_cursos_show', {'id': curso.id}) }}">Show</a>
-                                    <a href="{{ path('app_cursos_edit', {'id': curso.id}) }}">Edit</a>
-                                </td>
-                            </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan="6">no records found</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-
-                    
+            <h1 class="section-title mb-0 ">Cursos</h1>
+            <a href="{{ path('app_cursos_new') }}" class="btn btn-primary w-lg">Create new</a>
+            <br>
+            <div class="row">
+                {% for curso in cursos %}
+                <div class="col-md-4">
+                    <div class="card border-0 mb-4">
+                        <img src="{{ asset('uploads/')}}{{ curso.imagen }}" class="img-fluid" alt="{{ curso.titulo }}">
+                        <div class="card-body">                         
+                            <h6 class="card-title">{{ curso.titulo }}</h6>
+                            <p>{{ curso.descripcion[:33] }}...</p>
+                            <a href="{{ path('app_cursos_show', {'id': curso.id}) }}" class="small text-muted" title="Ver detalles del curso sobre {{ curso.tipo }}">Show</a>
+                            <a href="{{ path('app_cursos_edit', {'id': curso.id}) }}" class="small text-muted" title="Editar curso {{ curso.titulo }}">Edit</a>
+                        </div>
+                    </div>
                 </div>
+                {% endfor %}
+            </div>
+
+                
         </div>
     </section>    
 {% endblock %}

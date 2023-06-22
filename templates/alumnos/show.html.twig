@@ -5,53 +5,82 @@
 {% block div %}
     <section class="section" id="about">
         <div class="container">
-            <h1>Alumnos</h1>
+            <div class="row justify-content-between">
+                <div class="col-md-6 pr-md-5 mb-4 mb-md-0">
+                <h1>Alumno</h1>
 
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <th>Nombre</th>
-                        <td>{{ alumno.nombre }}</td>
-                    </tr>
-                    <tr>
-                        <th>Primer apellido</th>
-                        <td>{{ alumno.primerApellido }}</td>
-                    </tr>
-                    <tr>
-                        <th>Segundo apellido</th>
-                        <td>{{ alumno.segundoApellido }}</td>
-                    </tr>
-                    <tr>
-                        <th>Fecha nacimiento</th>
-                        <td>{{ alumno.fechaNacimiento ? alumno.fechaNacimiento|date('Y-m-d') : '' }}</td>
-                    </tr>
-                    <tr>
-                        <th>Domicilio</th>
-                        <td>{{ alumno.domicilio }}</td>
-                    </tr>
-                    <tr>
-                        <th>Poblacion</th>
-                        <td>{{ alumno.poblacion }}</td>
-                    </tr>
-                    <tr>
-                        <th>Codigo postal</th>
-                        <td>{{ alumno.codigoPostal }}</td>
-                    </tr>
-                    <tr>
-                        <th>Teléfono</th>
-                        <td>{{ alumno.telefono }}</td>
-                    </tr>
-                    <tr>
-                        <th>Email</th>
-                        <td>{{ alumno.email }}</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <a href="{{ path('app_alumnos_edit', {'id': alumno.id}) }}" class="btn btn-outline-primary" style="font-weight: 600; margin-bottom: 10px; width: 85px;">Edit</a>
-            {{ include('alumnos/_delete_form.html.twig') }}
-            <div style="margin-top: 20px;">
-                <a href="{{ path('app_alumnos_index') }}" >Back to list</a>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Nombre</th>
+                            <td>{{ alumno.nombre }}</td>
+                        </tr>
+                        <tr>
+                            <th>Primer apellido</th>
+                            <td>{{ alumno.primerApellido }}</td>
+                        </tr>
+                        <tr>
+                            <th>Segundo apellido</th>
+                            <td>{{ alumno.segundoApellido }}</td>
+                        </tr>
+                        <tr>
+                            <th>Fecha nacimiento</th>
+                            <td>{{ alumno.fechaNacimiento ? alumno.fechaNacimiento|date('Y-m-d') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Domicilio</th>
+                            <td>{{ alumno.domicilio }}</td>
+                        </tr>
+                        <tr>
+                            <th>Poblacion</th>
+                            <td>{{ alumno.poblacion }}</td>
+                        </tr>
+                        <tr>
+                            <th>Codigo postal</th>
+                            <td>{{ alumno.codigoPostal }}</td>
+                        </tr>
+                        <tr>
+                            <th>Teléfono</th>
+                            <td><a href="tel:{{ alumno.telefono }}" title="Llamar por télefono a {{ alumno.nombre }}">{{ alumno.telefono }}</a></td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td><a href="mailto:{{ alumno.email }}" title="Enviar a {{ alumno.nombre }} un e-mail">{{ alumno.email }}</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <a href="{{ path('app_alumnos_edit', {'id': alumno.id}) }}" class="btn btn-outline-primary" style="font-weight: 600; margin-bottom: 10px; width: 85px;">Edit</a>
+                {{ include('alumnos/_delete_form.html.twig') }}
+                <div style="margin-top: 20px;">
+                    <a href="{{ path('app_alumnos_index') }}" >Back to list</a>
+                </div>
+                </div>
+                <div class="col-md-6 pl-md-5">
+                    <h2>Realizando curso</h2>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Titulo</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for curso in alumno.alumnoscursos %}
+                            <tr>
+                                <td>{{ curso.FkCurso.id }}</td>
+                                <td>{{ curso.FkCurso.titulo }}</td>
+                                <td><a href="{{ path('app_cursos_show', {'id': curso.FkCurso.id}) }}">Show</a></td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="2">No esta haciendo ningun curso</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </section>        
